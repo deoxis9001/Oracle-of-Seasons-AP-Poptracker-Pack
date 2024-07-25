@@ -90,9 +90,10 @@ function onClear(slot_data)
     if slot_data["goal"] then
         Tracker:FindObjectForCode("goal").CurrentStage = tonumber(slot_data["goal"])
     end
-    if slot_data["horon_village_season"] then
-        Tracker:FindObjectForCode("horon_village_season_shuffle").CurrentStage = tonumber(slot_data["horon_village_season"])
+    if slot_data["normalize_horon_village_season"] then
+        Tracker:FindObjectForCode("horon_village_season_shuffle").CurrentStage = tonumber(slot_data["normalize_horon_village_season"])
     end
+	
     if slot_data["shuffle_old_men"] then
         Tracker:FindObjectForCode("shuffle_old_men").CurrentStage = tonumber(slot_data["shuffle_old_men"])
     end
@@ -181,7 +182,7 @@ function onClear(slot_data)
 			Tracker:FindObjectForCode("remains_season_hidden").CurrentStage = season_id
         end
 		if Tracker:FindObjectForCode("horon_village_season_shuffle").CurrentStage == 1 then
-			if  region_name == "horon village" then
+			if  region_name == "HORON_VILLAGE" then
 				Tracker:FindObjectForCode("horon_village_season_hidden").CurrentStage = season_id
 			end
         end
@@ -194,7 +195,14 @@ function onClear(slot_data)
         ['strange brothers portal'] = 4,
         ['house of pirates portal'] = 5,
         ['volcanoes east portal'] = 6,
-        ['d8 entrance portal'] = 7
+        ['d8 entrance portal'] = 7,
+        ['eastern suburbs portal'] = 0,
+        ['spool swamp portal'] = 0,
+        ['eyeglass lake portal'] = 0,
+        ['horon village portal'] = 0,
+        ['mt. cucco portal'] = 0,
+        ['temple remains upper portal'] = 0,
+        ['temple remains lower portal'] = 0
     }
     for region_name, portal_name in pairs(slot_data["portal_connections"]) do
         if  region_name == "eastern suburbs portal" then
